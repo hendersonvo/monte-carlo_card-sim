@@ -6,3 +6,6 @@ This project includes a script of a Monte Carlo simulation over N = 100,000 iter
 ## Technologies used
 Python 3.14.2
 Libraries: random, matplotlib
+
+## Rendered output
+![Distribution of Scores](distribution_plot.png)
