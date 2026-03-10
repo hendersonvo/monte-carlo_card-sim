@@ -9,24 +9,9 @@ def card_value(number):
         print("Not a valid card")
     elif number in ([0, 10, 20, 30, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51]): # corresponds to a 10, J, Q, or K
         return 10
-    elif number % 10 == 1: # corresponds to an ace
-        return 1
-    elif number % 10 == 2:
-        return 2
-    elif number % 10 == 3:
-        return 3
-    elif number % 10 == 4:
-        return 4
-    elif number % 10 == 5:
-        return 5
-    elif number % 10 == 6:
-        return 6
-    elif number % 10 == 7:
-        return 7
-    elif number % 10 == 8:
-        return 8
     else:
-        return 9
+        number = number % 10
+        return number
 
 def player(cards):
     ''' returns the score of the player's hand calculated from the first two cards in the deck
@@ -41,7 +26,6 @@ def player(cards):
             ace_count += 1
         else:
             score += card_value(i)
-
     return score
         
 
@@ -49,18 +33,12 @@ def dealer(cards):
     ''' returns the score of the dealer after drawing enough cards to have a hand equal to or greater than 17
         param cards is a list of integers
     '''
-
     score = 0 
-
     i = 2 
-
     while score < 17: 
         score += card_value(cards[i])
-        
         i += 1 
-
     return score
-
 
 num_games = 100000
 
@@ -72,17 +50,16 @@ num_push = 0
 win_streak = 0
 longest_streak = 0
 
-score_dict = {4:0, 5:0, 6:0, 7:0, 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0, 16:0, 17:0, 18:0, 19:0, 20:0, 21:0}
+score_dict = {}
+for i in range(4, 22):
+    score_dict.update({i: 0})
 
 
 for i in range(num_games):
     cards = list(range(52))
     random.shuffle(cards)
-    
     p = player(cards) 
-
     score_dict[p] += 1 
-    
     d = dealer(cards) 
 
     if p > d or d > 21: 
@@ -91,10 +68,8 @@ for i in range(num_games):
 
         if win_streak > longest_streak: 
             longest_streak = win_streak
-
     elif p == d:
         num_push += 1 
-
     elif p < d:
         win_streak = 0 
 
@@ -124,7 +99,6 @@ plt.ylabel('Frequency')
 plt.xticks(scores)
 plt.grid(axis='y', alpha=0.5)
 
-# Save the plot instead of just showing it
+# Save the plot and display
 plt.savefig('distribution_plot.png')
 plt.show()
-print("Plot saved as distribution_plot.png")
