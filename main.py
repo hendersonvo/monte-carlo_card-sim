@@ -116,6 +116,9 @@ frequencies = list(score_dict.values())
 plt.figure(figsize=(10, 6))
 plt.bar(scores, frequencies, color='skyblue', edgecolor='black')
 plt.title(f'Distribution of Player Scores (N={num_games:,})')
+plt.figtext(0.7, 0.01, f"Probability player wins: {win_prob * 100:.4f}%\n\
+Probability of push: {push_prob * 100:.4f}%\n\
+Longest winning streak: {longest_streak} games", wrap = True, fontsize=8, color='gray')
 plt.xlabel('Final Score')
 plt.ylabel('Frequency')
 plt.xticks(scores)
