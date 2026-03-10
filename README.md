@@ -11,5 +11,7 @@ Python 3.14.2
 
 Libraries: random, matplotlib
 
+The script for this simulation is housed in the 'code' folder.
+
 ## Rendered output
-![Distribution of Scores](distribution_plot.png)
+![Distribution of Scores](images/distribution_plot.png)
