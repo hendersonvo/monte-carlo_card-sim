@@ -8,6 +8,7 @@ We will simulate a game with one player and one dealer to investigate the probab
 
 ## Technologies used
 Python 3.14.2
+
 Libraries: random, matplotlib
 
 ## Rendered output
